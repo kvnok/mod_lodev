@@ -1,19 +1,23 @@
 #include "../include/stuff.h"
 
+void remake_image(t_data *d) {
+	mlx_delete_image(d->mlx, d->img);
+	d->img = mlx_new_image(d->mlx, screenWidth, screenHeight);
+	mlx_image_to_window(d->mlx, d->img, 0, 0);
+}
+
 void loop_hook(void *param) {
 	t_data *d;
 	d = (t_data *)param;
 	u_int32_t ceiling_c = light_cyan;
 	u_int32_t floor_c = light_brown;
-	mlx_delete_image(d->mlx, d->img);
-	d->img = mlx_new_image(d->mlx, screenWidth, screenHeight);
-	mlx_image_to_window(d->mlx, d->img, 0, 0);
+	remake_image(d);
 
 	for(int x = 0; x < w; x++) {
 		double cameraX = 2 * x / (double)w - 1;
 		double rayDirX = d->dirX + d->planeX*cameraX;
 		double rayDirY = d->dirY + d->planeY*cameraX;
-		
+
 		int mapX = (int)d->posX;
 		int mapY = (int)d->posY;
 		
