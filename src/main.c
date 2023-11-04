@@ -13,10 +13,10 @@ void loop_hook(void *param) {
 		double cameraX = 2 * x / (double)w - 1;
 		double rayDirX = d->dirX + d->planeX*cameraX;
 		double rayDirY = d->dirY + d->planeY*cameraX;
+		
 		int mapX = (int)d->posX;
 		int mapY = (int)d->posY;
-		double sideDistX;
-		double sideDistY;
+		
 		double deltaDistX;
 		if (rayDirX == 0) {
 			deltaDistX = 1e30;
@@ -31,11 +31,12 @@ void loop_hook(void *param) {
 		else {
 			deltaDistY = fabs(1 / rayDirY);
 		}
-		double perpWallDist;
+		
+		double sideDistX;
+		double sideDistY;
 		int stepX;
 		int stepY;
 		int hit = 0;
-		int side;
 		if (rayDirX < 0) {
 			stepX = -1;
 			sideDistX = (d->posX - mapX) * deltaDistX;
@@ -52,6 +53,8 @@ void loop_hook(void *param) {
 			stepY = 1;
 			sideDistY = (mapY + 1.0 - d->posY) * deltaDistY;
 		}
+
+		int side;
 		while (hit == 0) {
 			if (sideDistX < sideDistY) {
 				sideDistX += deltaDistX;
@@ -67,6 +70,8 @@ void loop_hook(void *param) {
 				hit = 1;
 			}
 		}
+
+		double perpWallDist;
 		if (side == 0) {
 			perpWallDist = (sideDistX - deltaDistX);
 		}
@@ -74,6 +79,7 @@ void loop_hook(void *param) {
 			perpWallDist = (sideDistY - deltaDistY);
 		}
 		int lineHeight = (int)(h / perpWallDist);
+
 		int drawStart = -lineHeight / 2 + h / 2;
 		if (drawStart < 0) {
 			drawStart = 0;
@@ -82,6 +88,7 @@ void loop_hook(void *param) {
 		if (drawEnd >= h) {
 			drawEnd = h - 1;
 		}
+
 		int texNum = d->map[mapX][mapY] - 1;
 		double wallX;
 		if (side == 0) {
@@ -98,6 +105,7 @@ void loop_hook(void *param) {
 		if (side == 1 && rayDirY < 0) {
 			texX = d->texture[texNum]->width - texX - 1;
 		}
+
 		double step = 1.0 * (d->texture[texNum]->height) / lineHeight;
 		double texPos = (drawStart - h / 2 + lineHeight / 2) * step;
 		for(int y = drawStart; y < drawEnd; y++) {
