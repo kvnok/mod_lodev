@@ -23,6 +23,7 @@ endif
 all: $(MLX42) $(NAME)
 
 $(MLX42):
+	git submodule update --init
 	cmake $(MLX42_DIR) -B $(MLX42_DIR)/build
 	$(MAKE) -C $(MLX42_DIR)/build -j4 --quiet
 
