@@ -1,5 +1,11 @@
 #include "../include/stuff.h"
 
+void remake_image(t_data *d) {
+	mlx_delete_image(d->mlx, d->img);
+	d->img = mlx_new_image(d->mlx, screenWidth, screenHeight);
+	mlx_image_to_window(d->mlx, d->img, 0, 0);
+}
+
 void print_map(int **map) {
 	for (int i = 0; i < mapHeight; i++) {
 		for (int j = 0; j < mapWidth; j++) {

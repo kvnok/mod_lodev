@@ -48,6 +48,43 @@
 #define light_pink 0xFFC0CBFF
 #define light_cyan 0xE0FFFFFF
 
+#define screenWidth 1280
+#define screenHeight 960
+#define texWidth 64
+#define texHeight 64
+#define w 1280
+#define h 960
+
+#define mapWidth 15
+#define mapHeight 15
+
+typedef struct s_calc {
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	int		mapX;
+	int		mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+	double	wallX;
+	int		texX;
+	int		texY;
+	double	step;
+	double	texPos;
+	int		texNum;
+	int		color;
+} t_calc;
+
 typedef struct s_data {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
@@ -61,17 +98,8 @@ typedef struct s_data {
 	mlx_texture_t	**texture;
 	uint32_t		**buffer;
 	int				**map;
+	t_calc			*c;
 }	t_data;
-
-#define screenWidth 1280
-#define screenHeight 960
-#define texWidth 64
-#define texHeight 64
-#define w 1280
-#define h 960
-
-#define mapWidth 15
-#define mapHeight 15
 
 //main.c
 void loop_hook(void *param);
@@ -80,6 +108,7 @@ void loop_hook(void *param);
 void	init_data(t_data *data);
 
 //utils.c
+void	remake_image(t_data *d);
 void	print_map(int **map);
 void	make_map(t_data *d);
 int32_t	pixel_select(int32_t r, int32_t g, int32_t b, int32_t a);
@@ -90,8 +119,11 @@ void	free_array(void **array, int size);
 void	cleanup(t_data *data);
 
 //calc.c
+void	calc(t_data *d, int x);
 
 //display.c
+void fill_buffer(t_data *d, int from, int until, uint32_t color);
+void buffer_management(t_data *d);
 
 //move.c
 void back_and_forth(t_data *d, double moveSpeed, int modifier);
