@@ -48,4 +48,55 @@
 #define light_pink 0xFFC0CBFF
 #define light_cyan 0xE0FFFFFF
 
+typedef struct s_data {
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	uint32_t		color;
+	double			posX;
+	double			posY;
+	double			dirX;
+	double			dirY;
+	double			planeX;
+	double			planeY;
+	mlx_texture_t	**texture;
+	uint32_t		**buffer;
+	int				**map;
+}	t_data;
+
+#define screenWidth 1280
+#define screenHeight 960
+#define texWidth 64
+#define texHeight 64
+#define w 1280
+#define h 960
+
+#define mapWidth 15
+#define mapHeight 15
+
+//main.c
+void loop_hook(void *param);
+
+//init.c
+void	init_data(t_data *data);
+
+//utils.c
+void	print_map(int **map);
+void	make_map(t_data *d);
+int32_t	pixel_select(int32_t r, int32_t g, int32_t b, int32_t a);
+void	fill_coords(t_data *d, int x1, int y1, int x2, int y2, int color);
+
+//cleanup.c
+void	free_array(void **array, int size);
+void	cleanup(t_data *data);
+
+//calc.c
+
+//display.c
+
+//move.c
+void back_and_forth(t_data *d, double moveSpeed, int modifier);
+void strafe(t_data *d, double moveSpeed, int modifier);
+void rotation(t_data *d, double rotSpeed, int modifier);
+void movement(t_data *d);
+
 #endif
