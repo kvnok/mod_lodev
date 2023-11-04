@@ -5,9 +5,7 @@ void loop_hook(void *param) {
 	d = (t_data *)param;
 
 	remake_image(d);
-	for(int x = 0; x < w; x++) {
-		calc(d, x);
-	}
+	calc(d);
 	buffer_management(d);
 	movement(d);
 }

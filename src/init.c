@@ -1,11 +1,10 @@
 #include "../include/stuff.h"
 
-
 void base_init(t_data *d) {
 	d->mlx = mlx_init(screenWidth, screenHeight, "testingyep", true);
 	d->img = mlx_new_image(d->mlx, screenWidth, screenHeight);
-	d->posX = 2.0;
-	d->posY = 5.2;	
+	d->posX = 12.0;
+	d->posY = 6.0;	
 	d->dirX = -1.0;
 	d->dirY = 0.0;
 	d->planeX = 0.0;

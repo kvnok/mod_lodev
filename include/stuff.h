@@ -119,10 +119,10 @@ void	free_array(void **array, int size);
 void	cleanup(t_data *data);
 
 //calc.c
-void	calc(t_data *d, int x);
+void	calc(t_data *d);
 
 //display.c
-void fill_buffer(t_data *d, int from, int until, uint32_t color);
+void fill_part_of_buffer(t_data *d, int from, int until, uint32_t color);
 void buffer_management(t_data *d);
 
 //move.c
