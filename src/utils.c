@@ -25,12 +25,12 @@ void make_map(t_data *d) {
 				d->map[i][j] = 0;
 		}
 	}
-	d->map[5][3] = 2;
-	d->map[5][4] = 3;
-	d->map[5][5] = 4;
-	d->map[5][6] = 5;
-	d->map[5][7] = 6;
-	d->map[5][8] = 7;
+	// d->map[5][3] = 2;
+	// d->map[5][4] = 3;
+	// d->map[5][5] = 4;
+	// d->map[5][6] = 5;
+	// d->map[5][7] = 6;
+	d->map[8][8] = 1;
 }
 
 int32_t pixel_select(int32_t r, int32_t g, int32_t b, int32_t a) {
