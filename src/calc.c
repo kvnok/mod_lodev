@@ -12,9 +12,9 @@ void fill_buffer_with_wall(t_data *d, int x) {
 		uint8_t b = pixelData[(texY * d->texture[d->c->texNum]->width + d->c->texX) * 4 + 2];
 		uint8_t a = pixelData[(texY * d->texture[d->c->texNum]->width + d->c->texX) * 4 + 3];
 		uint32_t color = pixel_select(r, g, b, a);
-		if (d->c->side == 1) {
-			color = (color >> 1) & 8355711;
-		}
+		// if (d->c->side == 1) {
+		// 	color = (color >> 1) & 8355711;
+		// }
 		d->buffer[y][x] = color;
 	}
 }
