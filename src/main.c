@@ -12,8 +12,8 @@ void loop_hook(void *param) {
 
 int main(int argc, char **argv) {
 	t_data d;
-
-	init_data(&d);
+	
+	init_data(&d, argv[1]);
 	make_map(&d);
 	mlx_image_to_window(d.mlx, d.img, 0, 0);
 	mlx_loop_hook(d.mlx, &loop_hook, &d);

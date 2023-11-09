@@ -1,14 +1,31 @@
 #include "../include/stuff.h"
 
-void base_init(t_data *d) {
+void base_init(t_data *d, char *s) {
 	d->mlx = mlx_init(screenWidth, screenHeight, "testingyep", true);
 	d->img = mlx_new_image(d->mlx, screenWidth, screenHeight);
-	d->posX = 12.0;
-	d->posY = 6.0;	
-	d->dirX = -1.0;
+	d->posX = 3.0;
+	d->posY = 6.0;
+	//north
 	d->dirY = 0.0;
 	d->planeX = 0.0;
+	d->dirX = -1.0;
 	d->planeY = 0.66;
+	if (s == NULL) {
+		return ;
+	} else if (s[0] == 's' || s[0] == 'S') { //south
+		d->dirX = -d->dirX;
+		d->planeY = -d->planeY;
+	} else if (s[0] == 'w' || s[0] == 'W') { //west
+		d->dirY = -1.0;
+		d->planeX = -0.66;
+		d->dirX = 0.0;
+		d->planeY = 0.0;
+	} else if (s[0] == 'e' || s[0] == 'E') { //east
+		d->dirY = 1.0;
+		d->planeX = 0.66;
+		d->dirX = 0.0;
+		d->planeY = 0.0;
+	}
 }
 
 void texture_init(t_data *d) {
@@ -57,8 +74,8 @@ void buffer_init(t_data *d) {
 	}
 }
 
-void init_data(t_data *d) {
-	base_init(d);
+void init_data(t_data *d, char *s) {
+	base_init(d, s);
 	texture_init(d);
 	map_init(d);
 	buffer_init(d);

@@ -105,7 +105,7 @@ typedef struct s_data {
 void loop_hook(void *param);
 
 //init.c
-void	init_data(t_data *data);
+void	init_data(t_data *data, char *s);
 
 //utils.c
 void	remake_image(t_data *d);
