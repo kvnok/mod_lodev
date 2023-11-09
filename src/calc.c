@@ -172,13 +172,32 @@ void calc_init(t_data *d, int x) {
 	d->c->mapY = (int)d->posY;
 }
 
-/*
-should i do follow the function order
-from bottom to top
-or from top to bottom
-
-atm its from bottom to top
-*/
+void print_calc_variables(t_data *d) {
+	printf("cameraX %f\n", d->c->cameraX);
+	printf("rayDirX %f\n", d->c->rayDirX);
+	printf("rayDirY %f\n", d->c->rayDirY);
+	printf("mapX %d\n", d->c->mapX);
+	printf("mapY %d\n", d->c->mapY);
+	printf("sideDistX %f\n", d->c->sideDistX);
+	printf("sideDistY %f\n", d->c->sideDistY);
+	printf("deltaDistX %f\n", d->c->deltaDistX);
+	printf("deltaDistY %f\n", d->c->deltaDistY);
+	printf("perpWallDist %f\n", d->c->perpWallDist);
+	printf("stepX %d\n", d->c->stepX);
+	printf("stepY %d\n", d->c->stepY);
+	printf("hit %d\n", d->c->hit);
+	printf("side %d\n", d->c->side);
+	printf("lineHeight %d\n", d->c->lineHeight);
+	printf("drawStart %d\n", d->c->drawStart);
+	printf("drawEnd %d\n", d->c->drawEnd);
+	printf("wallX %f\n", d->c->wallX);
+	printf("texX %d\n", d->c->texX);
+	printf("texY %d\n", d->c->texY);
+	printf("step %f\n", d->c->step);
+	printf("texPos %f\n", d->c->texPos);
+	printf("texNum %d\n", d->c->texNum);
+	printf("color %d\n\n\n\n", d->c->color);
+}
 
 void calc(t_data *d) {
 	for(int x = 0; x < w; x++) {
@@ -189,6 +208,7 @@ void calc(t_data *d) {
 		line_pos(d);
 		texture_coords(d);
 		fill_buffer_with_wall(d, x);
+		// print_calc_variables(d);
 		free(d->c);
 	}
 	// printf("(%.0f,%.0f)\n", d->posY, d->posX);
