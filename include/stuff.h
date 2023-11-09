@@ -55,7 +55,7 @@
 #define w 1280
 #define h 960
 
-#define mapWidth 15
+#define mapWidth 30
 #define mapHeight 15
 
 typedef struct s_calc {

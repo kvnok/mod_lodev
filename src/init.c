@@ -3,8 +3,10 @@
 void base_init(t_data *d, char *s) {
 	d->mlx = mlx_init(screenWidth, screenHeight, "testingyep", true);
 	d->img = mlx_new_image(d->mlx, screenWidth, screenHeight);
-	d->posX = 3.0;
-	d->posY = 6.0;
+	
+	d->posX = mapHeight - 2; //row
+	d->posY = 2; //column
+
 	//north
 	d->dirY = 0.0;
 	d->planeX = 0.0;
