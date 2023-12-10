@@ -1,0 +1,11 @@
+# Prerequisites
+*.d
+
+# Object files
+obj
+
+# Executables
+modular
+
+# Debug files
+.vscode
