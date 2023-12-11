@@ -38,8 +38,8 @@ void texture_init(t_data *d) {
 	}
 	d->texture[0] = mlx_load_png("pics/north.png");
 	d->texture[1] = mlx_load_png("pics/south.png");
-	d->texture[2] = mlx_load_png("pics/east.png");
-	d->texture[3] = mlx_load_png("pics/west.png");
+	d->texture[2] = mlx_load_png("pics/west.png");
+	d->texture[3] = mlx_load_png("pics/east.png");
 	d->texture[4] = mlx_load_png("pics/cyanmountains.png");
 	d->texture[5] = mlx_load_png("pics/trainwater.png");
 	d->texture[6] = mlx_load_png("pics/wood.png");

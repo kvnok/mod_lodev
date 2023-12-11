@@ -25,16 +25,16 @@ kind of a setup to find where the texture is hit
 void texture_coords(t_data *d) {
 	//what texture is hit
 	// d->c->texNum = d->map[d->c->mapX][d->c->mapY] - 1;
-	if (d->c->side == 0 && d->c->rayDirX > 0) {
-		d->c->texNum = 1;
-	}
 	if (d->c->side == 0 && d->c->rayDirX < 0) {
 		d->c->texNum = 0;
 	}
-	if (d->c->side == 1 && d->c->rayDirY > 0) {
-		d->c->texNum = 2;
+	if (d->c->side == 0 && d->c->rayDirX > 0) {
+		d->c->texNum = 1;
 	}
 	if (d->c->side == 1 && d->c->rayDirY < 0) {
+		d->c->texNum = 2;
+	}
+	if (d->c->side == 1 && d->c->rayDirY > 0) {
 		d->c->texNum = 3;
 	}
 	//what side is it hit on
